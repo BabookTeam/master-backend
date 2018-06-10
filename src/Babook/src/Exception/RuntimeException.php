@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+namespace App\Exception;
+
+use DomainException;
+use Zend\ProblemDetails\Exception\CommonProblemDetailsExceptionTrait;
+use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
+
+/**
+ * Handle RuntimeException
+ * @method self create()
+ */
+class RuntimeException extends DomainException implements ProblemDetailsExceptionInterface
+{
+    use CommonProblemDetailsExceptionTrait;
+    /**
+     * Create RuntimeException
+     *
+     * @param string $message custom eror message
+     * @return self
+     */
+    public static function create(string $message) : self
+    {
+        $e = new self($message);
+        $e->status = 500;
+        $e->detail = $message;
+        $e->type = '/api/doc/runtime-error';
+        $e->title = 'Runtime error, please contact the administrator';
+        return $e;
+    }
+}

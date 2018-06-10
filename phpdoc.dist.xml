@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpdoc>
+    <title>Babook</title>
+    <parser>
+        <target>src/Docs</target>
+        <encoding>utf8</encoding>
+        <markers>
+            <item>TODO</item>
+        </markers>
+        <visibility>public,protected</visibility>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+    </parser>
+    <transformer>
+        <target>src/Docs</target>
+    </transformer>
+    <transformations>
+        <template name="clean"/>
+    </transformations>
+    <files>
+        <directory>src</directory>
+        <ignore>src/Entity/*</ignore>
+    </files>
+    <logging>
+        <level>err</level>
+        <paths>
+            <default>build//log/{DATE}.log</default>
+            <errors>build/log/{DATE}.errors.log</errors>
+        </paths>
+    </logging>
+</phpdoc>
